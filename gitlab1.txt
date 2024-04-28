@@ -1,0 +1,119 @@
+sdlc methodologies:
+
+
+1. Lean Methodology: 
+Lean methodology is focused on eliminating waste, making decisions as late as possible, delivering outcomes as fast as possible and focusing on the big picture.
+ Project teams working with the Lean model find opportunities to cut waste at every step of the SDLC process – 
+ in other words, skipping unimportant meetings and reducing documentation as this is sure to streamline the software development process.
+ 
+2. Agile Methodology
+Agile is a combination of an incremental and iterative approach, where the product is released on an ongoing cycle then tested and improved at each iteration. 
+Fast failure is encouraged in agile methodology: the theory is that if you fail fast and early, you can solve minor issues before they grow into major issues.
+
+Within Agile, there are sub-models in place such as 
+extreme programming (XP),
+Rapid Application Development (RAD),
+Kanban and Scrum methodology.
+
+entire projects split to multiple requiremnts i.e sprints: 
+each sprint is planning,execution and testing independently
+delivering
+continuous feedback
+spiral: multiple iterations; 
+
+kanban board : this framework talks with flow progress 
+---
+1.back log     2.to do    3.inprogress  4.done 
+
+kanban is not really time box and leads to poor productvity and it's more flexible for developer to pick additional task from baklog  by not following more tight process. 
+it's just kind of ongoing flow of work.
+scrum: is timeboxed : sprints are usuallay a two to three weeks and it's team project for that productvity.
+
+
+
+Is Kanban Lean or Agile?
+Both frameworks follow Agile and Lean principles. Scrum is a specific implementation of Agile. Kanban is a specific implementation of Lean.
+KANBAN: 
+
+git central repo:
+git@github.com:pmannava22/March-2022.git
+
+who created the repo and who is the maintainer and he will provide access to that repo to others and he would act as a admin
+
+Gitlab repo:  git@gitlab.com:pmannavap/june2023.git
+
+maintainer -> admin level previllages 
+developer -> you can see repo,read and clone the repo
+visitor: read only Q&A
+
+how to add members: 
+ 1. goto projects 
+ 2.git branch -m <old brnach name> <new branch name>
+ 
+ 
+
+git config --global user.name "pmannava"
+git config --global user.email "pmannava08@gmail.com"
+git config --global push.default "simple". -> when you use git push command: git automatically uses the central repo defined in .git/config folder and pushes to that central repo.
+
+git clone <source central repo> <destination local repo>
+git status
+git add <file name> or git add .
+git commit -m "commit message"
+git log -num  --oneline
+git show <commit id>
+git push
+git pull   -> to update the workspace -> contents changes will use it from central repo to workspace.
+git branch <brnch name>
+git checkout branch name
+git merge <src brnah> <destination brnach>
+git cherry-pick commit id source repo
+git stash   -> backup and undo the changes
+git stsah list
+git stash apply stash@{0} _. current one(most recent in statsh)  -> git stash apply stash@{1} -> 1 level down to the previous version
+git stash clear
+ 
+ git reset:before commit
+ 1. git reset --soft(repository reference)
+ 2. git reset --mixed(undo in repository and staging area
+ 3. git reset --hard(repo +sa+wd)
+ 
+ git revert <commit id> it wil revrt the chnages and apply one more commit on top of the old commit id.
+ 
+ git checkout <commit id>  : git will take to the current branch and uses the latest commit id irrespctive of head position.
+ git checkout branch + commit id
+ git rebase
+ git remote -v
+ git remote add <ref(origin/dummy) <url(central or othee repo)  dest repo url
+
+bare repo: all central repository for sharing and storing
+non bare -> all local repo -> mod,shr,store 
+
+for build pur[ose to delete/not to rebuild the runtime files(untracked files) we need to use the command: git clean -n  -> git clean -f
+git ignore -> git to ignore the file for tracking a file:
+
+permissions for a enterprize level gitlab
+========================================
+1.maintainer -> admin
+2.Developer ->  
+3.visitor  -> 
+
+
+to use the ssh key to multiple user ids and we need to generate the ssh key from the machine to the different user by below command
+
+go to the .ssh folder in linux terminal or bash terminal and issue command as:  ssh-keygen -f s_mannava and it will create a public key under .ssh folder with this user id.
+by using this method we can authenticate password less authentication to copy the files.
+
+who created the repo and who is the maintainer and he will provide access to that repo to others and he would act as a admin
+
+Gitlab repo:  git@gitlab.com:pmannavap/june2023.git
+
+maintainer -> admin level previllages 
+developer -> you can see repo,read and clone the repo
+visitor: read only Q&A
+
+how to add members: 
+ 1. goto projects 
+ 2.git branch -m <old brnach name> <new branch name>
+
+ 
