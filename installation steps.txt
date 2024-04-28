@@ -1,0 +1,58 @@
+Here's a shell script to help you perform all the tasks you've listed. Please note that this is just a reference
+ and you might need to adjust the script according to your specific requirements and environment.
+```bash
+#!/bin/bash
+# 1. Add ports
+echo "Adding firewall rules for the specified ports"
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8009 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
+# 2. Install Java 11
+echo "Installing Java 11"
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+# 3. Install MySQL, add user, grant permissions, edit my.cnf
+echo "Installing MySQL"
+sudo apt install mysql-server -y
+echo "Creating MySQL user and granting permissions"
+MYSQL_ROOT_PASSWORD="your_mysql_root_password"
+NEW_USER="your_new_user"
+NEW_USER_PASSWORD="your_new_user_password"
+sudo mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "CREATE USER '${NEW_USER}'@'localhost' IDENTIFIED BY '${NEW_USER_PASSWORD}';"
+sudo mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "GRANT ALL PRIVILEGES ON *.* TO '${NEW_USER}'@'localhost';"
+sudo mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "FLUSH PRIVILEGES;"
+echo "Editing my.cnf file"
+sudo sed -i '/\[mysqld\]/a max_connections=1000' /etc/mysql/my.cnf
+# Add any other parameters you want to change
+# 4. Install Apache 2.4, add AJP file, edit httpd.conf
+echo "Installing Apache 2.4"
+sudo apt install apache2 -y
+echo "Adding AJP file and editing httpd.conf"
+# Replace "your_ajp_file" with the actual file path
+sudo cp your_ajp_file /etc/apache2/conf-available/ajp.conf
+sudo a2enconf ajp
+sudo systemctl restart apache2
+# 5. Install Tomcat, edit server.xml
+echo "Installing Tomcat"
+sudo apt install tomcat9 -y
+echo "Editing server.xml"
+# Add your changes to the server.xml file
+sudo sed -i 's/<Connector port="8080" protocol="HTTP\/1.1"/<Connector port="8080" protocol="HTTP\/1.1" URIEncoding="UTF-8"/' /etc/tomcat9/server.xml
+# 6. Copy war file to Tomcat
+echo "Copying war file to Tomcat"
+# Replace "your_war_file" with the actual file path
+sudo cp your_war_file /var/lib/tomcat9/webapps/
+# 7. Restore DB
+echo "Restoring MySQL database"
+# Replace "your_database" and "your_backup_file.sql" with the actual database name and backup file path
+sudo mysql -u ${NEW_USER} -p${NEW_USER_PASSWORD} your_database < your_backup_file.sql
+echo "All tasks completed!"
+```
+Please replace the placeholder values (like `your_mysql_root_password`, `your_new_user`, `your_new_user_password`, `your_ajp_file`, `your_war_file`, `your_database`, and `your_backup_file.sql`) with the appropriate values for your environment.
+Remember to give execute permission to the script file using `chmod +x script_name
+
+sgr-02e7b783d8370f351
+
+https://github.com/ann-afame/DEVOPS-WORLD
